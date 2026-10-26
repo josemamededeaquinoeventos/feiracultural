@@ -17,3 +17,6 @@ desktop.ini
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Scripts de deploy local
+subir-para-github.bat
