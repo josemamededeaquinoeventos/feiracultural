@@ -1,0 +1,704 @@
+/* ==========================================================================
+   1ª Feira Cultural Tech & E-Sports - E.E. José Mamede de Aquino
+   Design System & Main Stylesheet - Hand-Drawn & School Mural Aesthetic
+   Inspired by the official E.E. José Mamede de Aquino school flyer
+   ========================================================================== */
+
+:root {
+  /* School Flyer Primary & Accent Palette */
+  --cream-bg: #FCF9F1;
+  --cream-surface: #FFFDF7;
+  --paper-white: #FFFFFF;
+  
+  --navy-dark: #07172C;
+  --navy-main: #0C2340;
+  --navy-light: #1A3860;
+  
+  --sunny-yellow: #FFD21E;
+  --yellow-deep: #FFB800;
+  --yellow-pastel: #FFF4C2;
+  
+  --vibrant-red: #EA3323;
+  --red-deep: #C92012;
+  --red-pastel: #FDE8E6;
+  
+  --vibrant-green: #00A859;
+  --green-deep: #008746;
+  --green-pastel: #E4F7EC;
+  
+  --sky-blue: #0288D1;
+  --sky-blue-light: #29B6F6;
+  --sky-pastel: #E1F5FE;
+  
+  --vibrant-orange: #FF7A00;
+  --vibrant-purple: #7C3AED;
+  --purple-pastel: #F3E8FF;
+
+  /* Typography Colors */
+  --text-main: #0C2340;
+  --text-muted: #4B6382;
+  --text-light: #7E93A8;
+  --text-white: #FFFFFF;
+
+  /* Borders & Inks */
+  --border-ink: #0C2340;
+  --border-ink-thin: rgba(12, 35, 64, 0.18);
+  --border-ink-light: rgba(12, 35, 64, 0.1);
+
+  /* Fonts */
+  --font-display: 'Titan One', 'Fredoka', cursive, sans-serif;
+  --font-heading: 'Fredoka', cursive, sans-serif;
+  --font-hand: 'Patrick Hand', 'Caveat', cursive, sans-serif;
+  --font-body: 'Fredoka', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* 3D Paper Cutout & Sticker Shadows */
+  --shadow-sm: 2px 2px 0 var(--border-ink);
+  --shadow-md: 4px 4px 0 var(--border-ink);
+  --shadow-lg: 6px 6px 0 var(--border-ink);
+  --shadow-xl: 8px 8px 0 var(--border-ink);
+  --shadow-float: 0 12px 28px -6px rgba(12, 35, 64, 0.12);
+
+  /* Playful Wobbly & Hand-Drawn Radius */
+  --radius-hand-1: 24px 20px 26px 18px / 20px 26px 18px 24px;
+  --radius-hand-2: 18px 26px 20px 24px / 24px 18px 26px 20px;
+  --radius-sticker: 18px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-normal: 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Global Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream-bg);
+  /* School paper dot-matrix texture */
+  background-image: radial-gradient(#D8CEBC 1.25px, transparent 1.25px);
+  background-size: 26px 26px;
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-fast);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+/* ==========================================================================
+   Typography & 3D Cutout Effects
+   ========================================================================== */
+.heading-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 5.6vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--navy-main);
+}
+
+.heading-section {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--navy-main);
+  text-shadow: 2px 2px 0 #FFFFFF, 3px 3px 0 var(--border-ink);
+}
+
+.heading-card {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--navy-main);
+}
+
+.text-subhead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* 3D Paper Cut-out Text Style (with white outline and hard navy drop shadow) */
+.text-cutout-3d {
+  color: var(--navy-main);
+  text-shadow: 
+    -2px -2px 0 #FFF,
+     2px -2px 0 #FFF,
+    -2px  2px 0 #FFF,
+     2px  2px 0 #FFF,
+     0px  3px 0 #FFF,
+     3px  0px 0 #FFF,
+     4px  4px 0 var(--border-ink);
+}
+
+.text-cutout-yellow {
+  color: var(--sunny-yellow);
+  text-shadow: 
+    -2px -2px 0 var(--border-ink),
+     2px -2px 0 var(--border-ink),
+    -2px  2px 0 var(--border-ink),
+     2px  2px 0 var(--border-ink),
+     4px  4px 0 var(--border-ink);
+}
+
+.text-cutout-red {
+  color: var(--vibrant-red);
+  text-shadow: 
+    -2px -2px 0 #FFF,
+     2px -2px 0 #FFF,
+    -2px  2px 0 #FFF,
+     2px  2px 0 #FFF,
+     4px  4px 0 var(--border-ink);
+}
+
+.text-cutout-blue {
+  color: var(--sky-blue);
+  text-shadow: 
+    -2px -2px 0 #FFF,
+     2px -2px 0 #FFF,
+    -2px  2px 0 #FFF,
+     2px  2px 0 #FFF,
+     4px  4px 0 var(--border-ink);
+}
+
+/* Multi-colored letter spans (like "ENSINO MÉDIO" in the flyer) */
+.char-blue { color: #0288D1; }
+.char-cyan { color: #00A3FF; }
+.char-yellow { color: #FFC700; }
+.char-red { color: #EA3323; }
+.char-green { color: #00A859; }
+
+/* Hand-written / Note Script */
+.text-handwriting {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   Badges, Stamps & Washi Tape UI Elements
+   ========================================================================== */
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--border-ink);
+  background: var(--sunny-yellow);
+  color: var(--navy-main);
+  box-shadow: var(--shadow-sm);
+  transform: rotate(-1deg);
+}
+
+/* School Stamp Oval (from the flyer: "Mais que uma escola...") */
+.stamp-oval {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--sunny-yellow);
+  border: 3px solid var(--border-ink);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  padding: 14px 22px;
+  color: var(--navy-main);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  box-shadow: var(--shadow-md);
+  transform: rotate(4deg);
+  transition: transform var(--transition-fast);
+}
+
+.stamp-oval:hover {
+  transform: rotate(2deg) scale(1.04);
+}
+
+/* Yellow Brush Stroke Highlight Banner */
+.brush-banner {
+  background: var(--sunny-yellow);
+  border: 3px solid var(--border-ink);
+  border-radius: 12px 14px 10px 16px;
+  padding: 10px 22px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy-main);
+  box-shadow: var(--shadow-md);
+  display: inline-block;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* Navy Brush Banner with Chalk White Text (like "POR QUE ESCOLHER...") */
+.brush-banner-navy {
+  background: var(--navy-main);
+  border: 3px solid var(--border-ink);
+  border-radius: 14px 10px 16px 12px;
+  padding: 12px 28px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 0.03em;
+}
+
+/* Washi Tape Strip (decorative adhesive tape on card corners) */
+.washi-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 110px;
+  height: 26px;
+  background: rgba(255, 210, 30, 0.9);
+  border-left: 2px dashed rgba(12, 35, 64, 0.25);
+  border-right: 2px dashed rgba(12, 35, 64, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.washi-tape.blue {
+  background: rgba(41, 182, 246, 0.9);
+  transform: translateX(-50%) rotate(2deg);
+}
+
+.washi-tape.red {
+  background: rgba(234, 51, 35, 0.85);
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.washi-tape.green {
+  background: rgba(0, 168, 89, 0.85);
+  transform: translateX(-50%) rotate(1.5deg);
+}
+
+/* Section Common Header */
+.section-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 52px;
+  position: relative;
+}
+
+.section-header .badge-tag {
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  margin-top: 14px;
+}
+
+/* ==========================================================================
+   Header & Navbar (Mural Escolar)
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 253, 247, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 3px solid var(--border-ink);
+  transition: all var(--transition-normal);
+}
+
+.site-header.scrolled {
+  background: #FFFDF8;
+  box-shadow: 0 4px 0 var(--border-ink);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+  transition: height var(--transition-normal);
+}
+
+.site-header.scrolled .navbar {
+  height: 72px;
+}
+
+/* Brand Logo with Authentic J.M.A Shield */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-shield-wrap {
+  width: 44px;
+  height: 52px;
+  flex-shrink: 0;
+  filter: drop-shadow(2px 2px 0 var(--border-ink));
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover .brand-shield-wrap {
+  transform: rotate(-4deg) scale(1.06);
+}
+
+.brand-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-school-title {
+  font-family: var(--font-heading);
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--navy-main);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.brand-subtitle-tag {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--vibrant-red);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 2px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-link {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--navy-main);
+  position: relative;
+  padding: 6px 4px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--sunny-yellow);
+  border-radius: 2px;
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--sky-blue);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  background: var(--sunny-yellow);
+  border: 2px solid var(--border-ink);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy-main);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
+}
+
+.mobile-toggle:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-md);
+}
+
+.mobile-toggle svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Mobile Drawer */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 84px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 84px);
+  background: #FFFDF8;
+  border-top: 3px solid var(--border-ink);
+  padding: 28px 24px 44px;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform var(--transition-normal);
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+.mobile-menu .nav-links {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.mobile-menu .nav-link {
+  font-size: 1.35rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--navy-main);
+}
+
+@media (max-width: 992px) {
+  .nav-links, .nav-actions .btn-nav {
+    display: none;
+  }
+  .mobile-toggle {
+    display: flex;
+  }
+  .mobile-menu {
+    display: flex;
+  }
+}
+
+/* ==========================================================================
+   Buttons (Chunky 3D Paper Cut-out Style)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 26px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: var(--radius-sticker);
+  border: 3px solid var(--border-ink);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-fast);
+}
+
+.btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* Primary Yellow (Sunny & Vibrant, high contrast) */
+.btn-primary-neon,
+.btn-primary-yellow {
+  background: var(--sunny-yellow);
+  color: var(--navy-main);
+}
+
+.btn-primary-neon:hover,
+.btn-primary-yellow:hover {
+  background: #FFE054;
+}
+
+/* Green Action Button */
+.btn-primary-green {
+  background: var(--vibrant-green);
+  color: #FFFFFF;
+}
+
+.btn-primary-green:hover {
+  background: #00BF65;
+}
+
+/* Red Action Button */
+.btn-primary-red {
+  background: var(--vibrant-red);
+  color: #FFFFFF;
+}
+
+.btn-primary-red:hover {
+  background: #FF4738;
+}
+
+/* Secondary Paper Button */
+.btn-secondary-outline {
+  background: #FFFFFF;
+  color: var(--navy-main);
+  border: 3px solid var(--border-ink);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary-outline:hover {
+  background: var(--yellow-pastel);
+}
+
+.btn-outline-dark {
+  background: #FFFFFF;
+  color: var(--navy-main);
+  border: 3px solid var(--border-ink);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline-dark:hover {
+  background: var(--sky-pastel);
+  color: var(--sky-blue);
+}
+
+.btn-nav {
+  padding: 10px 20px;
+  font-size: 0.92rem;
+  background: var(--sunny-yellow);
+  color: var(--navy-main);
+}
+
+.btn-lg {
+  padding: 16px 36px;
+  font-size: 1.15rem;
+  border-radius: 20px;
+}
+
+/* ==========================================================================
+   Animated Doodles (Decorative floating stars, hearts, sunbursts)
+   ========================================================================== */
+.doodle-item {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+.doodle-star {
+  color: var(--sunny-yellow);
+  animation: floatDoodle 7s ease-in-out infinite alternate;
+}
+
+.doodle-heart {
+  color: var(--vibrant-red);
+  animation: floatDoodle 9s ease-in-out infinite alternate-reverse;
+}
+
+.doodle-sun {
+  color: var(--vibrant-orange);
+  animation: spinSlow 30s linear infinite;
+}
+
+@keyframes floatDoodle {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(6deg); }
+  100% { transform: translateY(6px) rotate(-4deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
